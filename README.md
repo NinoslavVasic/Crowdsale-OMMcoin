@@ -80,17 +80,17 @@ Deploy the crowdsale to the Kovan testnet, and store the deployed address for la
 
 ## Let's Deploy the Contracts on different testnet and see the difference Kovan vs. Local testnet on MetaMask
 
-### Final documents 
+## Final documents 
 
 * OmimarCoincodes: 'https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/OmimarCoin.sol'
 * OmimarCoin Crowdsales (codes): 'https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/Crowdsale.sol'
 
-### Contracts Deployment process - step by step
+## Contracts Deployment process - step by step
 
-* Deployment on Kovan testnet
+### Deployment on Kovan testnet
 In order for crowdsale contracts to work smart contracts should be executed in following order. Prior to deployment one has to open ganache and metamask, and change the network to Kovan. Deployment will be succesfull if the Kovan address is prefunded, as we need some funds for gas.
 
-* Deployment of the first contract OmimarCoin (solidity codes written in this contract should be imported in 'Crowdsale.sol'). Parameter required for deployment: 'name', 'symbol', 'initial_supply'.
+### Deployment of the first contract OmimarCoin (solidity codes written in this contract should be imported in 'Crowdsale.sol'). Parameter required for deployment: 'name', 'symbol', 'initial_supply'.
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/01-OmimarCoin_deployment.PNG)
 
@@ -98,26 +98,26 @@ In order for crowdsale contracts to work smart contracts should be executed in f
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/02-OmimarCoin-deployed-confirmation.PNG)
 
-### NOTE: To be able to sucessfully run crowdsale it is important to strictly follow order of deployment for next contracts:
+#### NOTE: To be able to sucessfully run crowdsale it is important to strictly follow order of deployment for next contracts:
 
-* OmimarCoinSaleDeployer Contract
+### OmimarCoinSaleDeployer Contract
 
 Parameters required for deployment: 'name', 'symbol', 'address' (initial metamask wallet address), and 'goal'.
 
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/03-OmimarCoinSaleDeployer.PNG)
 
-* OmimarCoinSaleDeployer Contract - Confirmation
+### OmimarCoinSaleDeployer Contract - Confirmation
 
 ![](hhttps://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/04-OmimarCoinSaleDeployer-confirmation.PNG)
 
-* OmimarCoinSale Deployment 
+### OmimarCoinSale Deployment 
 
 To deploy contract it is neccesseary to use 'omimar_sales_address' and input in the box next to 'At Address'. Then click to 'At Address' button to deploy the contract.
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/05-OmimarCoinSale-depl.PNG)
 
-* OmimarCoin Deployment
+### OmimarCoin Deployment
 
 To deploy contract it is neccesseary to use 'token_address' and input in the box next to 'At Address'. Then click to 'At Address' button to deploy the contract.
 
@@ -127,7 +127,7 @@ To deploy contract it is neccesseary to use 'token_address' and input in the box
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/07-OmimarCoin-getter_fn.PNG)
 
-* After all contracts are deployed we will buy some coins in several transactions.
+### After all contracts are deployed we will buy some coins in several transactions.
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/08-OmimarCoin-buyingcoins.PNG)
 
@@ -156,19 +156,19 @@ NEW BALANCE: 'MetaMask' wallet overview both currencies: 'ETH' and 'OMM".
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/15-wallet_balance.PNG)
 
 
-* Deployment on local test net, to check how contracts are performing and do all the additional functions testing.
+## Deployment on local test net, to check how contracts are performing and do all the additional functions testing.
 
 Change 'MetaMask' on local host testnet, Refresh 'remix' and compile 'Crowdsale.sol' document.
 
-* OmimarCoinSaleDeployer Contract
+### OmimarCoinSaleDeployer Contract
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/16-OmimarCoin_deployment-localnetwork.PNG)
 
-* OmimarCoinSale Deployment 
+### OmimarCoinSale Deployment 
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/17-OmimarCoinSale-depl.PNG)
 
-* OmimarCoin Deployment 
+### OmimarCoin Deployment 
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/18-OmimarCoin-depl.PNG)
 
