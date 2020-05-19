@@ -66,60 +66,139 @@ Leverage the [OpenZeppelin Crowdsale Documentation](https://docs.openzeppelin.co
 
 ### Testing the Crowdsale
 
-Test the crowdsale by sending Ether to the crowdsale from a different account (**not** the same account that is raising funds), then once you confirm that the crowdsale works as expected, try to add the token to MyCrypto and test a transaction. You can test the time functionality by replacing `now` with `fakenow`, and creating a setter function to modify `fakenow` to whatever time you want to simulate. You can also set the `close` time to be `now + 5 minutes`, or whatever timeline you'd like to test for a shorter crowdsale.
 
 When sending Ether to the contract, make sure you hit your `goal` that you set, and `finalize` the sale using the `Crowdsale`'s `finalize` function. In order to finalize, `isOpen` must return false (`isOpen` comes from `TimedCrowdsale` which checks to see if the `close` time has passed yet). Since the `goal` is 300 Ether, you may need to send from multiple accounts. If you run out of prefunded accounts in Ganache, you can create a new workspace.
 
 Remember, the refund feature of `RefundablePostDeliveryCrowdsale` only allows for refunds once the crowdsale is closed **and** the goal is met. See the [OpenZeppelin RefundableCrowdsale](https://docs.openzeppelin.com/contracts/2.x/api/crowdsale#RefundableCrowdsale) documentation for details as to why this is logic is used to prevent potential attacks on your token's value.
 
-We will add custom tokens in Metamask from the `Add custom token` feature:
 
-![add-custom-token](https://i.imgur.com/p1wwXQ9.png)
-
-You can also do the same for MetaMask. Make sure to purchase higher amounts of tokens in order to see the denomination appear in your wallets as more than a few wei worth.
+In this project we will use MetaMask. Make sure to purchase higher amounts of tokens in order to see the denomination appear in your wallets as more than a few wei worth.
 
 ### Deploying the Crowdsale
 
 Deploy the crowdsale to the Kovan testnet, and store the deployed address for later. Switch MetaMask to your desired network, and use the `Deploy` tab in Remix to deploy your contracts. Take note of the total gas cost, and compare it to how costly it would be in reality. Since you are deploying to a network that you don't have control over, faucets will not likely give out 300 test Ether. You can simply reduce the goal when deploying to a testnet to an amount much smaller, like 10,000 wei.
 
+## Let's Deploy the Contracts on different testnet and see the difference Kovan vs. Local testnet on MetaMask
 
 ### Final documents 
 
-*  OmimarCoincodes: 'https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/OmimarCoin.sol'
+* OmimarCoincodes: 'https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/OmimarCoin.sol'
 * OmimarCoin Crowdsales (codes): 'https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/Crowdsale.sol'
 
 ### Contracts Deployment process - step by step
 
 * Deployment on Kovan testnet
-In order for crowdsale contracts to work smart contracts should be executed in following order:
+In order for crowdsale contracts to work smart contracts should be executed in following order. Prior to deployment one has to open ganache and metamask, and change the network to Kovan. Deployment will be succesfull if the Kovan address is prefunded, as we need some funds for gas.
+
+* Deployment of the first contract OmimarCoin (solidity codes written in this contract should be imported in 'Crowdsale.sol'). Parameter required for deployment: 'name', 'symbol', 'initial_supply'.
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/01-OmimarCoin_deployment.PNG)
+
+* Confirmation of deployed contract
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/02-OmimarCoin-deployed-confirmation.PNG)
+
+### NOTE: To be able to sucessfully run crowdsale it is important to strictly follow order of deployment for next contracts:
+
+* OmimarCoinSaleDeployer Contract
+
+Parameters required for deployment: 'name', 'symbol', 'address' (initial metamask wallet address), and 'goal'.
+
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/03-OmimarCoinSaleDeployer.PNG)
+
+* OmimarCoinSaleDeployer Contract - Confirmation
+
 ![](hhttps://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/04-OmimarCoinSaleDeployer-confirmation.PNG)
+
+* OmimarCoinSale Deployment 
+
+To deploy contract it is neccesseary to use 'omimar_sales_address' and input in the box next to 'At Address'. Then click to 'At Address' button to deploy the contract.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/05-OmimarCoinSale-depl.PNG)
+
+* OmimarCoin Deployment
+
+To deploy contract it is neccesseary to use 'token_address' and input in the box next to 'At Address'. Then click to 'At Address' button to deploy the contract.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/06-OmimarCoin-depl.PNG)
+
+* Contract deployed - check the 'getter' functions to see wheter it is deployed properly.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/07-OmimarCoin-getter_fn.PNG)
+
+* After all contracts are deployed we will buy some coins in several transactions.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/08-OmimarCoin-buyingcoins.PNG)
+
+Confirmation of executed transaction. 
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/09-OmimarCoin-buyingcoins_conf.PNG)
+
+Adding OMM token in the wallet on 'MetaMask'
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/10-add_token.PNG)
+
+'OMM' token balance on 'MetaMask'.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/11-added_OMM_token.PNG)
+
+'MetaMask' wallet overview both currencies: 'ETH' and 'OMM".
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/12-metamask_wallet.PNG)
+
+Another purchase of 'OMM'.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/14-buyOMM.PNG)
+
+NEW BALANCE: 'MetaMask' wallet overview both currencies: 'ETH' and 'OMM".
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/15-wallet_balance.PNG)
 
 
-* Deployment on local test net
+* Deployment on local test net, to check how contracts are performing and do all the additional functions testing.
+
+Change 'MetaMask' on local host testnet, Refresh 'remix' and compile 'Crowdsale.sol' document.
+
+* OmimarCoinSaleDeployer Contract
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/16-OmimarCoin_deployment-localnetwork.PNG)
 
+* OmimarCoinSale Deployment 
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/17-OmimarCoinSale-depl.PNG)
 
+* OmimarCoin Deployment 
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/18-OmimarCoin-depl.PNG)
+
+* Purchasing of 'OMM' tokens in several transactions to reach the crowdsale goal.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/19-buying_OMM.PNG)
+
+* Confirmation.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/20-OMM-buy-conf.PNG)
+
+* New purchase - ACT LIKE A 'WHALE'.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/21-new-buyOMM.PNG)
+
+* Make sure we reached the crowdsale cap.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/22-cap_reached.PNG)
+
+* As the initial goal is to get 300 'ETH' we have to refund funds over the cap.
+
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/23-claim_refund.PNG)
-![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/crowdsale_image.png)
+
+
+
+
+<footer>
+    
+Copyright 2020 Columbia Engineering - FinTech Bootcamp NVasic
+    
+    
+</footer>
 
