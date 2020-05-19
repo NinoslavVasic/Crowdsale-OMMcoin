@@ -90,7 +90,7 @@ Deploy the crowdsale to the Kovan testnet, and store the deployed address for la
 ### Deployment on Kovan testnet
 In order for crowdsale contracts to work smart contracts should be executed in following order. Prior to deployment one has to open ganache and metamask, and change the network to Kovan. Deployment will be succesfull if the Kovan address is prefunded, as we need some funds for gas.
 
-### Deployment of the first contract OmimarCoin (solidity codes written in this contract should be imported in 'Crowdsale.sol'). Parameter required for deployment: 'name', 'symbol', 'initial_supply'.
+* Deployment of the first contract OmimarCoin (solidity codes written in this contract should be imported in 'Crowdsale.sol'). Parameter required for deployment: 'name', 'symbol', 'initial_supply'.
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/01-OmimarCoin_deployment.PNG)
 
