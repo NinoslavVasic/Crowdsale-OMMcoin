@@ -109,7 +109,8 @@ Parameters required for deployment: 'name', 'symbol', 'address' (initial metamas
 
 ### OmimarCoinSaleDeployer Contract - Confirmation
 
-![](hhttps://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/04-OmimarCoinSaleDeployer-confirmation.PNG)
+![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/04-OmimarCoinSaleDeployer-confirmation.PNG)
+
 
 ### OmimarCoinSale Deployment 
 
