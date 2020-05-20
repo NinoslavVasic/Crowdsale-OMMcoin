@@ -1,4 +1,4 @@
-# Crowdsale - OMMcoin
+# Crowdsale with Solidity - OMMcoin
 
 ![](https://github.com/NinoslavVasic/Crowdsale-OMMcoin/blob/master/screenshots/crowdsale_image.png)
 
